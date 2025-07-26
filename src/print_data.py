@@ -1,6 +1,9 @@
 import asyncio
+
 from sqlalchemy import text
+
 from src.database import async_session
+
 
 async def main():
     query = text("""

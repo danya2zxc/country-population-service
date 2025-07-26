@@ -1,6 +1,7 @@
 import aiohttp
 from bs4 import BeautifulSoup
 
+
 class StatTimesPopulationParser:
     URL = "https://statisticstimes.com/demographics/countries-by-population.php"
 
