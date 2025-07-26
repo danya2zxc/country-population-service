@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "country-population-service"
+version = "0.1.0"
+description = "Service for analyzing country populations by region"
+authors = ["Daniel <danya2zxc@email.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+sqlalchemy = "^2.0.41"
+psycopg2-binary = "^2.9.10"
+requests = "^2.32.4"
+beautifulsoup4 = "^4.13.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

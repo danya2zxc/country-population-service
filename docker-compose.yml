@@ -1,0 +1,33 @@
+
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: population
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql    
+
+
+  get-data:
+    build: .
+    command: python get_data.py
+    working_dir: /src
+    depends_on:
+      - db
+    environment:
+      Database_URL: postgres://postgres:postgres@db:5432/population
+
+    
+  print_data:
+    build: .
+    command: python print_data.py
+    working_dir: /src
+    depends_on:
+      - db
+    environment:
+      Database_URL: postgres://postgres:postgres@db:5432/population  
