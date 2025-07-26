@@ -13,21 +13,27 @@ services:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql    
 
 
-  get-data:
-    build: .
-    command: python get_data.py
+  get_data:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: get_data_service
+    command: poetry run python -m src.get_data
     working_dir: /src
     depends_on:
       - db
     environment:
-      Database_URL: postgres://postgres:postgres@db:5432/population
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db:5432/population
 
     
   print_data:
-    build: .
-    command: python print_data.py
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: print_data_service
+    command: poetry run python -m src.print_data
     working_dir: /src
     depends_on:
       - db
     environment:
-      Database_URL: postgres://postgres:postgres@db:5432/population  
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db:5432/population  

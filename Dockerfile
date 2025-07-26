@@ -14,10 +14,9 @@ RUN pip install poetry
 
 # Copy poetry configuration files
 COPY pyproject.toml ./
-RUN poetry install --no-interaction --no-ansi
+RUN poetry install --no-interaction --no-ansi --no-root
 
 
 # Copy source code
 COPY . .
-
 
