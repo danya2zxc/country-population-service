@@ -7,6 +7,7 @@ class CountryPopulation(Base):
     """
     Represents the population data for a country.
     """
+
     __tablename__ = "country_population"
 
     id = Column(Integer, primary_key=True, index=True)

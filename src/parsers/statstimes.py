@@ -22,9 +22,5 @@ class StatTimesPopulationParser:
                 population = int(population)
             except ValueError:
                 continue
-            data.append({
-                "country_name": country_name,
-                "region": region,
-                "population": population
-            })
+            data.append({"country_name": country_name, "region": region, "population": population})
         return data

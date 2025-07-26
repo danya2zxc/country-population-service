@@ -7,7 +7,7 @@ class WikiPopulationParser:
 
     async def get_data(self):
         async with aiohttp.ClientSession() as session, session.get(self.URL) as resp:
-                html = await resp.text()
+            html = await resp.text()
 
         soup = BeautifulSoup(html, "html.parser")
         table = soup.find("table", class_="wikitable")
@@ -25,9 +25,11 @@ class WikiPopulationParser:
                 population = int(population)
             except ValueError:
                 continue
-            data.append({
-                "country_name": country_name,
-                "population": population,
-                "region": region,
-            })
+            data.append(
+                {
+                    "country_name": country_name,
+                    "population": population,
+                    "region": region,
+                }
+            )
         return data

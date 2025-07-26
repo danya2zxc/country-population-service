@@ -50,5 +50,6 @@ async def main():
             print(f"Smallest country population: {row['min_country_population']}")
             print()  # Newline
 
+
 if __name__ == "__main__":
     asyncio.run(main())
